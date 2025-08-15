@@ -1,0 +1,277 @@
+/* Karui-inspired Terminal Design for Settings */
+.settings-container {
+  min-height: 100vh;
+  background: #1a1a1a;
+  color: #888888;
+  padding: 16px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.settings-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.settings-header {
+  text-align: left;
+  padding: 0;
+}
+
+.settings-header h1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0 0 8px 0;
+  color: var(--primary-green);
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: #888;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Box Layout inspired by karui */
+.box {
+  border: 2px solid var(--primary-green);
+  background: #1a1a1a;
+  margin-bottom: 24px;
+  padding: 20px;
+  position: relative;
+}
+
+.box-label {
+  position: absolute;
+  top: -12px;
+  left: 12px;
+  background: #1a1a1a;
+  padding: 0 8px;
+  font-size: 0.7rem;
+  color: var(--primary-green);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* Settings Sections */
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.setting-label {
+  font-size: 0.9rem;
+  color: #888888;
+  font-weight: 400;
+}
+
+.setting-value {
+  font-size: 0.9rem;
+  color: var(--primary-green);
+  font-weight: 500;
+}
+
+.setting-description {
+  font-size: 0.8rem;
+  color: #888888;
+  line-height: 1.4;
+  padding: 8px 0;
+  border-top: 1px solid #333;
+  margin-top: 8px;
+}
+
+/* Setting Actions */
+.setting-actions {
+  display: flex;
+  gap: 12px;
+  margin: 8px 0;
+}
+
+.setting-actions button {
+  background: #1a1a1a !important;
+  color: #888888 !important;
+  border: 1px solid var(--primary-green) !important;
+  font-family: inherit !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  padding: 8px 16px !important;
+}
+
+.setting-actions button:hover {
+  background: #1a1a1a !important;
+  border-color: var(--primary-green-hover) !important;
+}
+
+/* Force row for theme actions */
+.setting-actions.no-stack {
+  flex-direction: row !important;
+  width: 100%;
+}
+
+/* Stretch buttons to both ends with centered text */
+.setting-actions.no-stack button {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+}
+
+.danger-button {
+  border-color: #ff6b6b !important;
+  color: #ff6b6b !important;
+}
+
+.danger-button:hover {
+  border-color: #ff5252 !important;
+  background: #1a1a1a !important;
+}
+
+/* App Info */
+.app-info h3 {
+  font-size: 1.1rem;
+  color: var(--primary-green);
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.app-info p {
+  font-size: 0.9rem;
+  color: #888888;
+  line-height: 1.4;
+  margin: 0 0 16px 0;
+}
+
+.version-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Help Content */
+.help-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.command-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid #333;
+}
+
+.command-item code {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  padding: 4px 8px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: var(--primary-green);
+  min-width: 140px;
+  text-align: left;
+}
+
+.command-item span {
+  font-size: 0.9rem;
+  color: #888888;
+  flex: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .settings-container {
+    padding: 12px;
+  }
+  
+  .settings-header h1 {
+    font-size: 1.2rem;
+  }
+  
+  .box {
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .settings-content {
+    gap: 20px;
+  }
+
+  .setting-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .setting-actions.no-stack {
+    flex-direction: row !important;
+    width: 100%;
+  }
+  
+  .setting-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .command-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .command-item code {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+/* Theme input text color */
+.theme-input-field {
+  color: #888888 !important;
+}
+
+.theme-input-field::placeholder {
+  color: #888888 !important;
+  opacity: 1;
+}
+
+/* Theme input border color (override Angular Material outline) */
+:host ::ng-deep .task-input .mdc-notched-outline__leading,
+:host ::ng-deep .task-input .mdc-notched-outline__notch,
+:host ::ng-deep .task-input .mdc-notched-outline__trailing {
+  border-color: #888888 !important;
+}
+
+/* Focused state: use theme green */
+:host ::ng-deep .task-input .mdc-text-field--focused .mdc-notched-outline__leading,
+:host ::ng-deep .task-input .mdc-text-field--focused .mdc-notched-outline__notch,
+:host ::ng-deep .task-input .mdc-text-field--focused .mdc-notched-outline__trailing {
+  border-color: var(--primary-green) !important;
+}
+
+/* Hide subscript wrapper (hints/errors) for the theme input */
+:host ::ng-deep .task-input .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+} 

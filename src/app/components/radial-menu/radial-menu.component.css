@@ -1,0 +1,143 @@
+.radial-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: contain;
+  overflow: hidden;
+}
+
+.radial-menu-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.radial-menu {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  pointer-events: none;
+}
+
+.menu-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 45px solid var(--primary-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  filter: drop-shadow(0 0 2px rgba(var(--primary-green-rgb), 0.5));
+  z-index: 5;
+}
+
+.task-preview {
+  display: none; /* Hide text on triangle */
+}
+
+.menu-option {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.option-content {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #1a1a1a, var(--primary-green-20));
+  border: 1px solid var(--primary-green);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  position: relative;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.menu-option.highlighted .option-content {
+  background: linear-gradient(135deg, var(--primary-green-20), var(--primary-green));
+  border-color: var(--primary-green-hover);
+  transform: translate(-50%, -50%) scale(1.2);
+  box-shadow: 0 4px 16px rgba(var(--primary-green-rgb), 0.4);
+}
+
+.option-icon {
+  font-size: 16px;
+  color: #f0f0f0;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.option-label {
+  font-size: 8px;
+  color: #888888;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.menu-option.highlighted .option-icon {
+  color: #888888;
+}
+
+.menu-option.highlighted .option-label {
+  color: #888888;
+}
+
+/* Animation for menu appearance */
+.radial-menu-overlay.visible .menu-center {
+  animation: menuCenter 0.3s ease-out;
+}
+
+.radial-menu-overlay.visible .menu-option {
+  animation: menuOption 0.4s ease-out;
+}
+
+@keyframes menuCenter {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes menuOption {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+} 

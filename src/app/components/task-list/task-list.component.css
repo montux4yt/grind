@@ -1,0 +1,603 @@
+/* Karui-inspired Terminal Design */
+.task-list-container {
+  min-height: 100vh;
+  background: #1a1a1a;
+  color: #888888;
+  padding: 16px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.app-header {
+  text-align: left;
+  padding: 0;
+}
+
+.date {
+  font-size: 1.2rem;
+  color: var(--primary-green);
+  margin: 0;
+  font-weight: 400;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Box Layout inspired by karui */
+.box {
+  border: 2px solid var(--primary-green);
+  background: #1a1a1a;
+  margin-bottom: 24px;
+  padding: 20px;
+  position: relative;
+}
+
+.box-label {
+  position: absolute;
+  top: -12px;
+  left: 12px;
+  background: #1a1a1a;
+  padding: 0 8px;
+  font-size: 0.7rem;
+  color: var(--primary-green);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* Category Tabs - Karui Style */
+.category-tabs-karui {
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #333;
+}
+
+.category-tabs-karui span {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 1px solid #333;
+  margin-right: 8px;
+  background: #1a1a1a;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: inherit;
+  transition: all 0.1s ease;
+}
+
+.category-tabs-karui .active-tab {
+  color: var(--primary-green);
+  background: #1a1a1a;
+  border-color: var(--primary-green);
+  font-weight: 500;
+}
+
+.category-tabs-karui .inactive-tab {
+  color: #888;
+}
+
+.category-tabs-karui .inactive-tab:hover {
+  color: #888888;
+  border-color: var(--primary-green-hover);
+}
+
+/* Add Task Section */
+.add-task-section {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.task-input {
+  flex: 1;
+}
+
+.task-input ::ng-deep .mat-mdc-form-field {
+  --mdc-outlined-text-field-input-text-color: #888888;
+  --mdc-outlined-text-field-label-text-color: #888;
+  --mdc-outlined-text-field-outline-color: #666;
+  --mdc-outlined-text-field-hover-outline-color: #888;
+  --mdc-outlined-text-field-focus-outline-color: var(--primary-green);
+  --mdc-outlined-text-field-focus-label-text-color: var(--primary-green);
+  --mdc-outlined-text-field-caret-color: var(--primary-green);
+}
+
+.task-input ::ng-deep .mat-mdc-text-field-wrapper {
+  background: #1a1a1a;
+}
+
+.task-input ::ng-deep .mat-mdc-input-element {
+  color: #888888 !important;
+  font-family: inherit !important;
+  font-size: 0.9rem !important;
+  caret-color: var(--primary-green) !important;
+}
+
+.task-input ::ng-deep .mat-mdc-input-element::placeholder {
+  color: #666 !important;
+}
+
+.task-input ::ng-deep .mat-mdc-input-element::selection {
+  background: var(--primary-green) !important;
+  color: #888888 !important;
+}
+
+.task-input ::ng-deep .mat-mdc-input-element:focus {
+  outline: none !important;
+  border-color: var(--primary-green) !important;
+}
+
+.task-input ::ng-deep input:focus {
+  border-color: var(--primary-green) !important;
+  outline: 2px solid var(--primary-green) !important;
+  outline-offset: 2px !important;
+}
+
+.task-input ::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline {
+  border-color: var(--primary-green) !important;
+}
+
+.task-input ::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+.task-input ::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+.task-input ::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: var(--primary-green) !important;
+  border-width: 2px !important;
+}
+
+/* Ensure the entire form field has green focus styling */
+.task-input ::ng-deep .mat-mdc-form-field.mat-focused {
+  --mdc-outlined-text-field-focus-outline-color: var(--primary-green) !important;
+  --mdc-outlined-text-field-focus-outline-width: 2px !important;
+}
+
+/* Remove the form field subscript wrapper */
+.task-input ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+
+/* Force green border color on all focus states */
+.task-input ::ng-deep .mat-mdc-text-field-wrapper:focus-within {
+  border-color: var(--primary-green) !important;
+}
+
+.task-input ::ng-deep .mdc-text-field--focused {
+  border-color: var(--primary-green) !important;
+}
+
+.task-input ::ng-deep .mdc-text-field--focused .mdc-notched-outline {
+  border-color: var(--primary-green) !important;
+}
+
+/* Complete rewrite for the exact Material structure */
+
+/* Main wrapper - default state */
+.task-input ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--outlined {
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Form field flex container */
+.task-input ::ng-deep .mat-mdc-form-field-flex {
+  background: transparent !important;
+}
+
+/* Notched outline container - default state */
+.task-input ::ng-deep .mdc-notched-outline.mdc-notched-outline--upgraded {
+  border: none !important;
+}
+
+/* Individual notch pieces - default state */
+.task-input ::ng-deep .mat-mdc-notch-piece.mdc-notched-outline__leading {
+  border: 1px solid #666 !important;
+  border-right: none !important;
+}
+
+.task-input ::ng-deep .mat-mdc-notch-piece.mdc-notched-outline__notch {
+  border-top: 1px solid #666 !important;
+  border-bottom: 1px solid #666 !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.task-input ::ng-deep .mat-mdc-notch-piece.mdc-notched-outline__trailing {
+  border: 1px solid #666 !important;
+  border-left: none !important;
+}
+
+/* FOCUSED STATE - turn everything green */
+.task-input ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--outlined.mdc-text-field--focused .mat-mdc-notch-piece.mdc-notched-outline__leading {
+  border-color: var(--primary-green) !important;
+  border-width: 2px !important;
+}
+
+.task-input ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--outlined.mdc-text-field--focused .mat-mdc-notch-piece.mdc-notched-outline__notch {
+  border-top-color: var(--primary-green) !important;
+  border-bottom-color: var(--primary-green) !important;
+  border-top-width: 2px !important;
+  border-bottom-width: 2px !important;
+}
+
+.task-input ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--outlined.mdc-text-field--focused .mat-mdc-notch-piece.mdc-notched-outline__trailing {
+  border-color: var(--primary-green) !important;
+  border-width: 2px !important;
+}
+
+/* Floating label styling */
+.task-input ::ng-deep .mdc-floating-label.mat-mdc-floating-label {
+  color: #888 !important;
+}
+
+.task-input ::ng-deep .mdc-floating-label.mat-mdc-floating-label.mdc-floating-label--float-above {
+  color: var(--primary-green) !important;
+}
+
+/* Input element inside form field infix */
+.task-input ::ng-deep .mat-mdc-form-field-infix .mat-mdc-input-element.mat-mdc-form-field-input-control.mdc-text-field__input {
+  color: #888888 !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.add-button {
+  background: var(--primary-green) !important;
+  color: #888888 !important;
+  border: 2px solid var(--primary-green) !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 4px !important;
+  font-size: 1rem !important;
+  font-weight: bold !important;
+  min-height: 50px !important;
+}
+
+.add-button:hover {
+  background: var(--primary-green-hover) !important;
+  border-color: var(--primary-green-hover) !important;
+}
+
+.add-button:disabled {
+  background: #333 !important;
+  border-color: #333 !important;
+  color: #666 !important;
+}
+
+.add-button.error {
+  background: #8B0000 !important;
+  border-color: #8B0000 !important;
+  color: #FFFFFF !important;
+  animation: errorFlash 0.5s ease-in-out;
+}
+
+@keyframes errorFlash {
+  0% { background: var(--primary-green) !important; }
+  50% { background: #8B0000 !important; }
+  100% { background: #8B0000 !important; }
+}
+
+/* Tasks Section */
+.tasks-section {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.tasks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #333;
+}
+
+.tasks-header h2 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0;
+  color: var(--primary-green);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.category-stats {
+  font-size: 0.7rem;
+  color: #888;
+  font-family: inherit;
+}
+
+.stat-category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  padding: 4px 0;
+}
+
+.stat-category:last-child {
+  margin-bottom: 0;
+}
+
+.category-name {
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.category-numbers {
+  color: #888;
+  font-family: inherit;
+}
+
+.stat-category.completed-category .category-name,
+.stat-category.completed-category .category-numbers {
+  color: var(--primary-green);
+  font-weight: 500;
+}
+
+/* Task List - Terminal Style */
+.task-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  background: #1a1a1a;
+  border-bottom: 1px solid #333;
+  border-radius: 0;
+  transition: all 0.1s ease;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  font-family: inherit;
+  position: relative;
+}
+
+.task-item:last-child {
+  margin-bottom: 0;
+}
+
+.task-item.long-pressing {
+  background: var(--primary-green-20) !important;
+  transform: scale(0.98);
+}
+
+.task-item:hover {
+  background: #1a1a1a;
+  border-color: var(--primary-green);
+}
+
+.task-item.completed {
+  opacity: 0.6;
+  background: #1a1a1a;
+}
+
+.task-item.completed .task-title {
+  text-decoration: line-through;
+  color: #666;
+}
+
+.task-item.completed .task-dot {
+  background: #666;
+}
+
+.task-dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: var(--primary-green);
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.task-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-title {
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #888888;
+  margin-bottom: 2px;
+  word-wrap: break-word;
+  font-family: inherit;
+}
+
+.task-title.editing {
+  display: none;
+}
+
+.task-edit-input {
+  width: 100%;
+  background: #1a1a1a;
+  border: 1px solid var(--primary-green);
+  padding: 4px 8px;
+  color: #888888 !important;
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.task-edit-input:focus {
+  border-color: var(--primary-green-hover);
+  background: #1a1a1a;
+}
+
+.task-edit-input::selection {
+  background: var(--primary-green-40);
+  color: #888888;
+}
+
+.task-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-time {
+  font-size: 0.7rem;
+  color: #666;
+  font-family: inherit;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+}
+
+.empty-state h3 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0 0 8px 0;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.empty-state p {
+  font-size: 0.8rem;
+  margin: 0;
+  color: #666;
+}
+
+.no-category-message {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 40px 20px;
+}
+
+/* Category Management - Terminal Style */
+.category-management {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  z-index: 50;
+}
+
+.add-category-btn {
+  background: var(--primary-green) !important;
+  color: #888888 !important;
+  border: 2px solid var(--primary-green) !important;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.add-category-btn.active {
+  background: var(--primary-green-hover) !important;
+  border-color: var(--primary-green-hover) !important;
+}
+
+.add-category-section {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin-top: 12px;
+  background: #1a1a1a;
+  padding: 12px;
+  border: 2px solid var(--primary-green);
+  min-width: 200px;
+}
+
+.category-input {
+  flex: 1;
+}
+
+.category-input ::ng-deep .mat-mdc-form-field {
+  --mdc-outlined-text-field-input-text-color: #888888;
+  --mdc-outlined-text-field-label-text-color: #888;
+  --mdc-outlined-text-field-outline-color: var(--primary-green);
+  --mdc-outlined-text-field-hover-outline-color: var(--primary-green-hover);
+  --mdc-outlined-text-field-focus-outline-color: var(--primary-green);
+  --mdc-outlined-text-field-focus-label-text-color: var(--primary-green);
+  --mdc-outlined-text-field-caret-color: var(--primary-green);
+}
+
+/* Remove the form field subscript wrapper for category input */
+.category-input ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+
+.category-input ::ng-deep .mat-mdc-input-element {
+  font-family: inherit !important;
+  font-size: 0.8rem !important;
+}
+
+/* Long press visual feedback */
+.task-item:active {
+  transform: scale(0.99);
+  background: #1a1a1a;
+}
+
+.task-item.long-pressing {
+  background: var(--primary-green-20) !important;
+  border-color: var(--primary-green) !important;
+  transform: scale(1.01);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .task-list-container {
+    padding: 12px;
+  }
+  
+  .box {
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .add-task-section {
+    gap: 6px;
+  }
+  
+  .add-button {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  
+  /* Improve touch targets for mobile */
+  .task-item {
+    padding: 16px;
+    margin-bottom: 12px;
+    min-height: 48px;
+  }
+  
+  .category-tabs-karui span {
+    padding: 12px 16px;
+    min-height: 44px;
+  }
+  
+  .task-item {
+    padding: 10px;
+    margin-bottom: 6px;
+  }
+  
+  .task-dot {
+    width: 6px;
+    height: 6px;
+    margin-right: 10px;
+  }
+  
+  .category-management {
+    bottom: 80px;
+    right: 16px;
+  }
+} 

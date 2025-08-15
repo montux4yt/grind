@@ -1,0 +1,74 @@
+/* Minimal Angular Material Theme */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* Theme Variables */
+:root {
+  --primary-green: #4a7c4a;
+  --primary-green-rgb: 74, 124, 74;
+  --primary-green-10: rgba(74, 124, 74, 0.10);
+  --primary-green-20: rgba(74, 124, 74, 0.20);
+  --primary-green-40: rgba(74, 124, 74, 0.40);
+  --primary-green-50: rgba(74, 124, 74, 0.50);
+  --primary-green-70: rgba(74, 124, 74, 0.70);
+  --primary-green-hover: #6fa86f;
+  --background-dark: #1a1a1a;
+  --text-light: #888888;
+  --border-color: #333333;
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  background: var(--background-dark);
+  color: var(--text-light);
+}
+
+/* Material Component Overrides - Only for used components */
+.mat-mdc-form-field {
+  --mdc-theme-primary: var(--primary-green);
+  --mat-form-field-focus-select-arrow-color: var(--primary-green);
+}
+
+.mat-mdc-form-field .mat-mdc-form-field-focus-overlay {
+  background-color: var(--primary-green);
+}
+
+.mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+.mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+.mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: var(--primary-green) !important;
+}
+
+.mat-mdc-form-field.mat-focused .mdc-floating-label {
+  color: var(--primary-green) !important;
+}
+
+.mat-mdc-button.mat-primary {
+  --mdc-theme-primary: var(--primary-green);
+  color: var(--primary-green);
+}
+
+.mat-mdc-button.mat-primary:not(:disabled) {
+  color: var(--primary-green);
+}
+
+.mat-mdc-fab.mat-primary {
+  --mdc-theme-primary: var(--primary-green);
+  background-color: var(--primary-green);
+}
+
+.mat-mdc-outlined-button.mat-primary {
+  color: var(--primary-green);
+  border-color: var(--primary-green);
+}
+
+.mat-mdc-outlined-button.mat-primary:hover {
+  background-color: var(--primary-green-10);
+}
